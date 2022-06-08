@@ -1,9 +1,10 @@
 package org.example;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage extends Utils{
+
+    LoadProperty loadProperty = new LoadProperty();
 
     private By _maleOrFemaleField = By.xpath("//input[@id=\"gender-male\"]");
     private By _firstNameField = By.xpath("//input[@name='FirstName']");
@@ -18,46 +19,36 @@ public class RegistrationPage extends Utils{
 
     public void verifyUserIsOnRegistrationPage(){
 
-        driverWaitUntilURLToBe(20, "https://demo.nopcommerce.com/register?returnUrl=%2F");
+        driverWaitUntilURLToBe(20, loadProperty.getProperty("RegistrationPageURL"));
     }
 
     public void userEntersRegistrationDetails(){
 
         //Select Male or Female
         clickOnElement(_maleOrFemaleField); //radio button
-        //driver.findElement(By.id("gender-male")).click();
 
         //Enter firstname
-        typeText(_firstNameField,"Rajesh");
-        //driver.findElement(By.xpath("//input[@name='FirstName']")).sendKeys("Testing");
+        typeText(_firstNameField, loadProperty.getProperty("FirstName"));
 
         //Enter lastname
-        typeText(_lastNameField,"Patel");
-        //driver.findElement(By.id("LastName")).sendKeys("Patel");
+        typeText(_lastNameField, loadProperty.getProperty("LastName"));
 
         //Fill in the date of birth
-        Select birthDay = new Select(driver.findElement(_dateOfBirthField));
-        birthDay.selectByIndex(10);
-        Select birthMonth = new Select(driver.findElement(_monthOfBirthField));
-        birthMonth.selectByValue("5");
-        Select birthYear = new Select(driver.findElement(_yearOfBirthField));
-        birthYear.selectByVisibleText("1998");
+        selectFromDropDownIndexValue(_dateOfBirthField, Integer.parseInt(loadProperty.getProperty("DateOfBirthday")));
+        selectFromDropDownIndexValue(_monthOfBirthField, Integer.parseInt(loadProperty.getProperty("MonthOfBirthday")));
+        selectFromDropDownVisibleText(_yearOfBirthField, loadProperty.getProperty("YearOfBirthday"));
 
         //Enter email
-        typeText(_emailField,"testingpatel22"+randomDate()+"@gmail.com");
-        //driver.findElement(By.id("Email")).sendKeys("testingpatel22@gmail.com");
+        typeText(_emailField,loadProperty.getProperty("UserEmailField01")+randomDate()+loadProperty.getProperty("UserEmailField02"));
 
         //Enter password
-        typeText(_passwordField,"as23.twoone");
-        //driver.findElement(By.id("Password")).sendKeys("as23.twoone");
+        typeText(_passwordField,loadProperty.getProperty("UserPassword"));
 
         //Enter confirm password
-        typeText(_confirmPasswordField,"as23.twoone");
-        //driver.findElement(By.id("ConfirmPassword")).sendKeys("as23.twoone");
+        typeText(_confirmPasswordField,loadProperty.getProperty("UserPassword"));
 
         //Click on register button
         clickOnElement(_registerButton);
-        //driver.findElement(By.id("register-button")).click();
     }
 
 }
