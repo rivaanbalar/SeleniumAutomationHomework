@@ -199,7 +199,7 @@ public class TestSuit extends BaseTest {
     @Test
     public void verifyThatProductListIsInZToAFormat (){
 
-        //THIS TEST CASE SHOULD FAIL\\
+        //---THIS TEST CASE SHOULD FAIL---\\
 
         //Click on computer on Home Page
         homePage.computerButton();
