@@ -10,6 +10,10 @@ import java.time.Duration;
 
 public class DriverManager extends Utils{
 
+//            public static final String USERNAME = System.getenv("BROWSERSTACK_USERNAME");
+//            public static final String AUTOMATE_KEY = System.getenv("BROWSERSTACK_ACCESS_KEY");
+//            public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+
     String browserName = "chrome";
 
     public void openBrowser(){
@@ -37,7 +41,7 @@ public class DriverManager extends Utils{
         }
 
         //Duration to timing
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30)); //if the line is 'RED' then click on the bulb and select the first option
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); //if the line is 'RED' then click on the bulb and select the first option
 
         //Maximize the screen
         driver.manage().window().maximize();

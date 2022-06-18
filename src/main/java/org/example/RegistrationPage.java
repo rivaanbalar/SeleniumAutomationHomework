@@ -47,6 +47,9 @@ public class RegistrationPage extends Utils{
         //Enter confirm password
         typeText(_confirmPasswordField,loadProperty.getProperty("UserPassword"));
 
+    }
+
+    public void clickOnRegisterButton(){
         //Click on register button
         clickOnElement(_registerButton);
     }

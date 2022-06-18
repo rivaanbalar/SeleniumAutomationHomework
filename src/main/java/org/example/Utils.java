@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,6 +53,10 @@ public class Utils extends BasePage{
     public static void driverWaitUntilURLToBe(int time, String url){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
         wait.until(ExpectedConditions.urlToBe(url));
+    }
+
+    public static void verifyCurrentURL(String URL){
+        Assert.assertEquals(driver.getCurrentUrl(), URL);
     }
 
     public static void driverWaitUntilVisibilityOfAllElementsLocatedBy(int time, By by) {

@@ -32,7 +32,7 @@ public class HomePage extends Utils {
     private By _facebookIcon = By.className("facebook");
     private By _searchBar = By.id("small-searchterms");
     private By _searchButton = By.className("search-box-button");
-    private By _detailsButton = By.xpath("/html/body/div[6]/div[3]/div/div/div/div/div[5]/div[2]/div[2]/div[3]/a");
+    private By _detailsButton = By.xpath("//div/div[2]/div[2]/div[3]/a[@href=\"/nopcommerce-new-release\"]");
 
     public void clickOnRegistrationButton() {
         //Click on register button
@@ -175,7 +175,7 @@ public class HomePage extends Utils {
     }
 
     public void verifyProductListedContainsProductNameRequested(){
-        //Verify that all the product listed contains either Nike or Apple (Same as URL) (Assert Point)
+        //Verify that all the product listed contains given product name (Same as URL) (Assert Point)
         List<WebElement> productTitles = driver.findElements(_productTitles);
         for (WebElement e: productTitles){
             System.out.println(e.getText());
@@ -185,6 +185,10 @@ public class HomePage extends Utils {
     public void clickOnDetailsButton(){
         //On Home Page click under News and nopCommerce new release!, click on Details Button
         clickOnElement(_detailsButton);
+    }
+
+    public void clickOnCategoryLink(String categoryName){
+    clickOnElement(By.linkText(categoryName));
     }
 
 }
